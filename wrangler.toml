@@ -1,0 +1,8 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "wilmake"
+compatibility_date = "2024-12-27"
+assets = { directory = "./" }
+routes = [
+  { pattern = "wilmake.com", custom_domain = true },
+  { pattern = "www.wilmake.com", custom_domain = true }
+]
