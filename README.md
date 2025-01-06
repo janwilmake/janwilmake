@@ -1,6 +1,6 @@
 # Jan Wilmake
 
-Full Stack TypeScript Developer & AI Software Engineer
+Independent Researcher & Typescript Nerd Building AGI
 
 ## Education
 
