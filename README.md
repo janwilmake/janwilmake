@@ -1,3 +1,5 @@
+Hi I'm Jan. Working on OSS high-scale AI Code Transformation. Open to freelance gigs; DM me on X pls :)
+
 <details>
 
 <summary>CV</summary>
