@@ -1,4 +1,4 @@
-Hi I'm Jan. Working on OSS high-scale AI Code Transformation. Open to freelance gigs; DM me on X pls :)
+Hi I'm Jan. Working on OSS high-scale AI Code Transformation. Open to freelance gigs and partnerships; DM me on X pls :)
 
 <details>
 
