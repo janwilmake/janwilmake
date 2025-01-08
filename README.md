@@ -1,3 +1,7 @@
+<details>
+
+<summary>CV</summary>
+
 # Jan Wilmake
 
 Independent Researcher & Typescript Nerd Building AGI
@@ -50,3 +54,5 @@ Created and maintained text-based MMORPG in PHP, managing volunteer team
 
 - English (Professional)
 - Dutch (Native)
+
+</details>
