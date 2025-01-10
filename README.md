@@ -58,3 +58,12 @@ Created and maintained text-based MMORPG in PHP, managing volunteer team
 - Dutch (Native)
 
 </details>
+
+Currently very into Cloudflare DO's
+
+- https://github.com/janwilmake/dodfetch
+- https://uithub.com/janwilmake/fetch-just-once
+- https://uithub.com/janwilmake/fetch-each
+- https://github.com/janwilmake/nested-fetch-experiments
+
+
