@@ -4,7 +4,7 @@ I aim to create an AGI-like system by creating software that can reliably build 
 
 ## Contributing
 
-Join me on this journey by checking out my[OSS work](https://github.com/janwilmake?tab=repositories) and [leave a message](https://github.com/janwilmake/janwilmake/discussions). Also happy to [chat on X](https://x.com/janwilmake) - not always responsive though.
+Join me on this journey by checking out my [OSS work](https://github.com/janwilmake?tab=repositories) and [leave a message](https://github.com/janwilmake/janwilmake/discussions). Also happy to [chat on X](https://x.com/janwilmake) - not always responsive though.
 
 ## Support and Licenses
 
