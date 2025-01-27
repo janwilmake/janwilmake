@@ -1,5 +1,7 @@
-# I'm Jan and I've coded 1000s of hours hacking together an army of agents to work at my next business 🫡🫡🫡🤖
+# I'm Jan and I've coded 1000s of hours hacking together 100s of tools for agents to work at my next business 🫡🫡🫡🤖
 
-Working on OSS high-scale AI Code Analysis and Transformation, I aim to create an AGI-like system by creating software that can reliably build software. Also having fun [on X](https://x.com/janwilmake).
+I quit my job april '22 to start full-time independent research on applied AI. Among other things, I've been Working on OSS high-scale AI Code Analysis and Transformation, I aim to create an AGI-like system by creating software that can reliably build software. Crazy, huh?
 
-Please [sponsor my work](https://github.com/sponsors/janwilmake) to receive an update now and then, and get access to premium products. Most of my products will be integrated with GitHub sponsorship!
+[I'm looking for up to 50 sponsors of $50 per month](https://github.com/sponsors/janwilmake) that wish to be included in my experimental testing group. I have dozens of tools directly available for this group, free of charge, and dozens more coming up.
+
+[DM me on X if you have questions or wanna say hi!](https://x.com/janwilmake)
