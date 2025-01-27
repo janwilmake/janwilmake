@@ -4,4 +4,4 @@ I quit my job april '22 to start full-time independent research on applied AI. A
 
 [I'm looking for up to 50 'sponsors' sponsoring $50 per month](https://github.com/sponsors/janwilmake) that wish to be included in my experimental testing group. It's best if you're an experienced programmer or at least want to learn (with the help of LLMs). I have dozens of tools directly available for this group, free of further charge, and dozens more coming up.
 
-[DM me on X to see what I'm working on, have questions, or wanna say hi!](https://x.com/janwilmake)
+[Find me on X to see what I'm working on, have questions, or wanna say hi!](https://x.com/janwilmake)
