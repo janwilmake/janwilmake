@@ -3,6 +3,8 @@ name = "wilmake"
 compatibility_date = "2024-12-27"
 assets = { directory = "./" }
 routes = [
+  { pattern = "janwilmake.com", custom_domain = true },
+  { pattern = "www.janwilmake.com", custom_domain = true },
   { pattern = "wilmake.com", custom_domain = true },
   { pattern = "www.wilmake.com", custom_domain = true }
 ]
