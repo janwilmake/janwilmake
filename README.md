@@ -7,7 +7,7 @@
 
 By [sponsoring](https://github.com/sponsors/janwilmake) - minimum $1 - you get access to all of this. **Your sponsored money can be used by yourself as a balance** for all used APIs and agents.
 
-# Backstory
+# Who am I?
 
 I'm Jan and I've coded 1000s of hours hacking together 100s of tools for agents to work at my next business 🫡🫡🫡🤖
 
