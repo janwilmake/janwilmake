@@ -1,7 +1,9 @@
 # Access My AI App Store
 
+- Get LLM context for your code via [uithub](https://uithub.com)
 - Review key datapoints of your repos in [the dashboard](https://dashboard.uithub.com)
 - Chat with any codebase to extract valuable insights in [the chat](https://chat.uithub.com)
+- More interesting github tools at [forgithub](https://forgithub.com)
 - Use dozens of tools over Open APIs, focused around AI SWE (dm for info)
 - Build the next generation of coding agents with me (let's chat!)
 
