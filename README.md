@@ -2,7 +2,7 @@
 
 The sponsored amount gets credited to your GitHub account, and can be used for all APIs, tooling, and agents connected to this ecosystem.
 
-- https://chat.uithub.com
+- https://githuq.com
 - https://uithub.com
 - More interesting github tools at [forgithub](https://forgithub.com)
 
