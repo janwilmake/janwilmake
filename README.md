@@ -1,10 +1,13 @@
-# Add Balance And Use My Tools
+# Deposit Any Amount To Use These Tools!
 
-The sponsored amount gets credited to your GitHub account, and can be used for all APIs, tooling, and agents connected to this ecosystem.
+The sponsored amount gets credited to your account and is linked with your GitHub Account. It can be used for all APIs, tooling, and agents connected to this ecosystem. The ecosystem will get larger as I keep building.
 
-- https://githuq.com
-- https://uithub.com
-- More interesting github tools at [forgithub](https://forgithub.com)
+Current tools
+
+- https://uithub.com - LLM Ready Data for GitHub
+- https://forgithub.com - Other tools for GitHub (not all included)
+- https://openapisearch.com - (Free) LLM Tooling for Navigating Complex APIs
+- https://xymake.com - LLM-ready Data for X 
 
 # Backstory
 
@@ -12,4 +15,4 @@ I'm Jan and for the last 3 years I'm all in building an army of agents to scale 
 
 I quit my job april '22 to start full-time independent research on applied AI. Among other things, I've been Working on OSS high-scale AI Code Analysis and Transformation, I aim to create an AGI-like system by creating software that can reliably build software.
 
-Find me on [X](https://x.com/janwilmake) or [add balance by sponsoring](https://github.com/sponsors/janwilmake) to use the paid tools.
+Find me on [X](https://x.com/janwilmake)
