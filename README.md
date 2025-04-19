@@ -15,4 +15,4 @@ I'm Jan and for the last 3 years I'm all in building an army of agents to scale 
 
 I quit my job april '22 to start full-time independent research on applied AI. Among other things, I've been Working on OSS high-scale AI Code Analysis and Transformation, I aim to create an AGI-like system by creating software that can reliably build software.
 
-Find me on [X](https://x.com/janwilmake)
+Learn more with these [top posts on X](https://x.com/search?q=from:janwilmake%20min_faves:20&src=typed_query&f=top)
