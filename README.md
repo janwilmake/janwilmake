@@ -6,14 +6,10 @@ are mirrors (some better, some worse) that allow accessing the information from 
 
 - Google - https://googllm.com
 - GitHub - https://uithub.com
-- NPMJS - https://npmjz.com
 - Cloudflare Dashboard - https://flaredream.com
 - APIs - https://openapisearch.com
 - X - https://xymake.com
-- LLM - https://lmpify.com
 - ArXiv (Papers) - https://arxivmd.org
-- YouTube - https://youtudo.com (Unstable)
-- Aggregated - https://llmtext.com (Unstable)
 
 Now that we have the URL back to what is was meant for, now for LLMs, we can use it directly in our interfaces for
 context building. I've build https://contextarea.com to demonstrate this, and it's first application where it can be
