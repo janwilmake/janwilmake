@@ -27,7 +27,7 @@ I'm using Cloudflare to deploy everything. They have everything I need.
 Useful Build Patterns:
 
 - How Agents Store Information - https://getdorm.com
-- How Agents Identify - https://smootherauth.com
+- How Agents Identify - https://simplerauth.com
 - How Agents Pay - https://github.com/janwilmake/stripeflare
 - Agent-Friendly Web Principles - https://github.com/janwilmake/user-agent-router
 - Bringing it together - https://github.com/janwilmake/user-agent-402
