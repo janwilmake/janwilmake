@@ -42,6 +42,10 @@ I quit my job april '22 to start full-time independent research on applied AI. A
 
 Learn more with these [top posts on X](https://x.com/search?q=from:janwilmake%20min_faves:20&src=typed_query&f=top)
 
+# Sponsors
+
+[![](https://assets.p0web.com/dark-parallel-logo-270.png)](https://parallel.ai)
+
 # For Companies - Opening OSS contract!
 
 I have an open spot for an OSS contract to work with me! Consider working with me if:
