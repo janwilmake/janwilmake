@@ -14,7 +14,7 @@ Check out https://lists.forgithub.com/janwilmake for lists I keep track of.
 
 # Sponsors
 
-Does your organization benefit from my work? [Sponsor me](https://github.com/sponsors/janwilmake) for support!
+Does your organization benefit from my work? [Sponsor me](https://github.com/sponsors/janwilmake) for support! Companies sponsoring me are listed below:
 
 [![](https://assets.p0web.com/dark-parallel-logo-270.png)](https://parallel.ai)
 
