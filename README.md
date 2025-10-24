@@ -24,5 +24,9 @@ Does your organization benefit from my work? [Sponsor me](https://github.com/spo
 
 # md
 
+<a href="https://parallel.ai">
+
 ![Logo](dark-parallel-logo-270.png#gh-light-mode-only)
 ![Logo](white-parallel-logo-270.png#gh-dark-mode-only)
+
+</a>
