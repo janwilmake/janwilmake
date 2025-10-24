@@ -22,5 +22,5 @@ Does your organization benefit from my work? [Sponsor me](https://github.com/spo
 
 # md
 
-![Logo](white-parallel-logo-270.png#gh-light-mode-only)
-![Logo](dark-parallel-logo-270.png#gh-dark-mode-only)
+![Logo](dark-parallel-logo-270.png#gh-light-mode-only)
+![Logo](white-parallel-logo-270.png#gh-dark-mode-only)
