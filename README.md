@@ -12,5 +12,16 @@ The main products that I built that I use daily are [uithub](https://uithub.com)
 
 Does your organization benefit from my work? [Sponsor me](https://github.com/sponsors/janwilmake) for support! Companies sponsoring me are listed below:
 
+# picture
+
+<a href="https://parallel.ai">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="white-parallel-logo-270.png">
+  <source media="(prefers-color-scheme: light)" srcset="dark-parallel-logo-270.png">
+  <img alt="Logo" src="dark-parallel-logo-270.png">
+</picture>
+</a>
+# md
+
 ![Logo](dark-parallel-logo-270.png#gh-light-mode-only)
 ![Logo](white-parallel-logo-270.png#gh-dark-mode-only)
