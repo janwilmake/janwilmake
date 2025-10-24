@@ -21,6 +21,7 @@ Does your organization benefit from my work? [Sponsor me](https://github.com/spo
   <img alt="Logo" src="dark-parallel-logo-270.png">
 </picture>
 </a>
+
 # md
 
 ![Logo](dark-parallel-logo-270.png#gh-light-mode-only)
