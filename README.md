@@ -12,29 +12,15 @@ The main products that I built that I use daily are [uithub](https://uithub.com)
 
 Does your organization benefit from my work? [Sponsor me](https://github.com/sponsors/janwilmake) for support! Companies sponsoring me are listed below:
 
-# svg
-
-<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .logo-text { fill: #000000; }
-    @media (prefers-color-scheme: dark) {
-      .logo-text { fill: #ffffff; }
-    }
-  </style>
-  <text x="10" y="50" class="logo-text" font-size="32" font-family="Arial, sans-serif">
-    My Logo
-  </text>
-</svg>
-
 # picture
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://assets.p0web.com/dark-parallel-logo-270.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://assets.p0web.com/white-parallel-logo-270.png">
-  <img alt="Logo" src="https://assets.p0web.com/dark-parallel-logo-270.png">
+  <source media="(prefers-color-scheme: dark)" srcset="dark-parallel-logo-270.png">
+  <source media="(prefers-color-scheme: light)" srcset="white-parallel-logo-270.png">
+  <img alt="Logo" src="dark-parallel-logo-270.png">
 </picture>
 
 # md
 
-![Logo](https://assets.p0web.com/white-parallel-logo-270.png#gh-light-mode-only)
-![Logo](https://assets.p0web.com/dark-parallel-logo-270.png#gh-dark-mode-only)
+![Logo](white-parallel-logo-270.png#gh-light-mode-only)
+![Logo](dark-parallel-logo-270.png#gh-dark-mode-only)
