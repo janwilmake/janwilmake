@@ -15,8 +15,8 @@ Does your organization benefit from my work? [Sponsor me](https://github.com/spo
 # picture
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dark-parallel-logo-270.png">
-  <source media="(prefers-color-scheme: light)" srcset="white-parallel-logo-270.png">
+  <source media="(prefers-color-scheme: dark)" srcset="white-parallel-logo-270.png">
+  <source media="(prefers-color-scheme: light)" srcset="dark-parallel-logo-270.png">
   <img alt="Logo" src="dark-parallel-logo-270.png">
 </picture>
 
