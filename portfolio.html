@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- made like this: https://claude.ai/share/dbca1272-e43b-47bc-a1b0-f271e474a2b5 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Wilmake — Building the Agent-Friendly Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --fg: #e8e6e3;
+            --accent: #00ff88;
+            --accent-dim: #00ff8833;
+            --muted: #666;
+            --border: #222;
+            --card-bg: #111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Noise overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Grid background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Animated accent glow */
+        .glow-orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .glow-orb.one {
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .glow-orb.two {
+            bottom: -200px;
+            left: -200px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-50px, 50px) scale(1.1);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 400;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title span {
+            display: block;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-title span:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .hero-title span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .hero-title span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .hero-title .accent {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            max-width: 700px;
+            color: var(--muted);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 3rem;
+            font-weight: 400;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        /* Featured Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card.featured {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 255, 136, 0.05) 100%);
+        }
+
+        .project-category {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .project-card.featured .project-title {
+            font-size: 2.5rem;
+        }
+
+        .project-description {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--fg);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+            color: var(--accent);
+        }
+
+        .project-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .philosophy-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .philosophy-quote {
+            font-family: 'Instrument Serif', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            line-height: 1.3;
+            color: var(--fg);
+        }
+
+        .philosophy-quote .accent {
+            color: var(--accent);
+        }
+
+        .philosophy-text {
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .philosophy-text p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Domains Showcase */
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .domain-item {
+            background: var(--bg);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .domain-item:hover {
+            background: var(--card-bg);
+        }
+
+        .domain-item a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--fg);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .domain-item:hover a {
+            color: var(--accent);
+        }
+
+        /* Skills/Expertise */
+        .expertise-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .expertise-item {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .expertise-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .expertise-description {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact-section {
+            text-align: center;
+            padding: 12rem 3rem;
+        }
+
+        .contact-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--fg);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card.featured {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-content {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-text {
+                padding-left: 0;
+                padding-top: 2rem;
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .domains-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero,
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .domains-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <div class="glow-orb one"></div>
+    <div class="glow-orb two"></div>
+
+    <nav>
+        <a href="#" class="logo">JAN.WILMAKE</a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#domains">Domains</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Solo Entrepreneur & Full-Stack Developer</div>
+            <h1 class="hero-title">
+                <span>Building the</span>
+                <span class="accent">Agent-Friendly</span>
+                <span>Internet</span>
+            </h1>
+            <p class="hero-description">
+                I create infrastructure that enables AI agents to navigate, understand, and interact with the web.
+                From MCP servers to programmatic APIs — making the internet readable for the next generation of
+                intelligence.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">705</span>
+                    <span class="stat-label">Repositories</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Live Products</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Years Building</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="work">
+        <div class="section-header">
+            <h2 class="section-title">Featured Work</h2>
+            <span class="section-number">01</span>
+        </div>
+
+        <div class="projects-grid">
+            <article class="project-card featured reveal">
+                <div>
+                    <span class="project-category">AI Infrastructure</span>
+                    <h3 class="project-title">UIThub</h3>
+                    <p class="project-description">
+                        The premier code context platform. Transforms any GitHub repository into AI-friendly context,
+                        enabling LLMs to understand and work with codebases at scale. Powered by Cloudflare Workers
+                        for global edge performance.
+                    </p>
+                    <a href="https://uithub.com" class="project-link" target="_blank">
+                        Visit uithub.com
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" />
+                        </svg>
+                    </a>
+                </div>
+                <div>
+                    <p class="project-description" style="margin-top: 2rem;">
+                        <strong style="color: var(--fg);">Key Features:</strong><br><br>
+                        • Intelligent file filtering with LLM context optimization<br>
+                        • Real-time repository streaming and transformation<br>
+                        • Plugin architecture for custom processors<br>
+                        • MCP server integration for AI agents<br>
+                        • Universal API for code intelligence
+                    </p>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <span class="project-category">Protocol Design</span>
+                <h3 class="project-title">Agent-Friendly Web</h3>
+                <p class="project-description">
+                    Defining principles and standards for making the web navigable by AI agents.
+                    The foundation for a programmatic internet.
+                </p>
+                <a href="https://agent-friendly.com" class="project-link" target="_blank">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <span class="project-category">MCP Ecosystem</span>
+                <h3 class="project-title">LLMTEXT</h3>
+                <p class="project-description">
+                    Tools and converters for the llms.txt standard. Transforming docs,
+                    blogs, and APIs into LLM-consumable formats.
+                </p>
+                <a href="https://llmtext.com" class="project-link" target="_blank">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <span class="project-category">Developer Tools</span>
+                <h3 class="project-title">OpenAPI Search</h3>
+                <p class="project-description">
+                    Making APIs accessible to AI code generation. Search, discover, and
+                    integrate APIs through natural language.
+                </p>
+                <a href="https://openapisearch.com" class="project-link" target="_blank">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <span class="project-category">Cloudflare Patterns</span>
+                <h3 class="project-title">Durable Objects Toolkit</h3>
+                <p class="project-description">
+                    A collection of patterns for stateful serverless: DORM, Queryable Objects,
+                    Migratable Objects, and more. Building blocks for infinite scale.
+                </p>
+                <a href="https://itscooldo.com" class="project-link" target="_blank">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <span class="project-category">Context Engineering</span>
+                <h3 class="project-title">Context Area</h3>
+                <p class="project-description">
+                    A cloud-based IDE focused on context engineering for AI development.
+                    Build better prompts, manage context windows effectively.
+                </p>
+                <a href="https://contextarea.com" class="project-link" target="_blank">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+
+            <article class="project-card reveal">
+                <span class="project-category">Payments</span>
+                <h3 class="project-title">Stripeflare</h3>
+                <p class="project-description">
+                    Virtual wallet system for Cloudflare Workers. Add monetization
+                    to any worker with a simple middleware.
+                </p>
+                <a href="https://stripeflare.com" class="project-link" target="_blank">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" />
+                    </svg>
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <section id="philosophy" class="philosophy">
+        <div class="philosophy-content reveal">
+            <div class="philosophy-quote">
+                "Autonomy through <span class="accent">systems</span> —
+                both in code architecture and life design."
+            </div>
+            <div class="philosophy-text">
+                <p>
+                    I believe in building infrastructure that enables independence. Every tool I create
+                    is designed to give developers and AI agents more capability with less dependency.
+                </p>
+                <p>
+                    The web is transitioning from human-first to agent-first. I'm building the bridges
+                    — making APIs discoverable, documentation consumable, and codebases understandable
+                    by the next generation of digital intelligence.
+                </p>
+                <p>
+                    Solo entrepreneurship isn't just a business model, it's a philosophy. Small teams,
+                    focused tools, maximum leverage. Cloudflare Workers as the foundation.
+                    Global edge, instant scale, zero maintenance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="domains">
+        <div class="section-header">
+            <h2 class="section-title">Live Products</h2>
+            <span class="section-number">02</span>
+        </div>
+
+        <div class="domains-grid reveal">
+            <div class="domain-item"><a href="https://uithub.com" target="_blank">uithub.com</a></div>
+            <div class="domain-item"><a href="https://agent-friendly.com" target="_blank">agent-friendly.com</a></div>
+            <div class="domain-item"><a href="https://llmtext.com" target="_blank">llmtext.com</a></div>
+            <div class="domain-item"><a href="https://openapisearch.com" target="_blank">openapisearch.com</a></div>
+            <div class="domain-item"><a href="https://contextarea.com" target="_blank">contextarea.com</a></div>
+            <div class="domain-item"><a href="https://forgithub.com" target="_blank">forgithub.com</a></div>
+            <div class="domain-item"><a href="https://markdownbrowser.com" target="_blank">markdownbrowser.com</a></div>
+            <div class="domain-item"><a href="https://stripeflare.com" target="_blank">stripeflare.com</a></div>
+            <div class="domain-item"><a href="https://chatcompletions.com" target="_blank">chatcompletions.com</a></div>
+            <div class="domain-item"><a href="https://simplerauth.com" target="_blank">simplerauth.com</a></div>
+            <div class="domain-item"><a href="https://flaredream.com" target="_blank">flaredream.com</a></div>
+            <div class="domain-item"><a href="https://getdorm.com" target="_blank">getdorm.com</a></div>
+            <div class="domain-item"><a href="https://itscooldo.com" target="_blank">itscooldo.com</a></div>
+            <div class="domain-item"><a href="https://installthismcp.com" target="_blank">installthismcp.com</a></div>
+            <div class="domain-item"><a href="https://googllm.com" target="_blank">googllm.com</a></div>
+            <div class="domain-item"><a href="https://wilmake.com" target="_blank">wilmake.com</a></div>
+        </div>
+    </section>
+
+    <section id="expertise">
+        <div class="section-header">
+            <h2 class="section-title">Expertise</h2>
+            <span class="section-number">03</span>
+        </div>
+
+        <div class="expertise-list">
+            <div class="expertise-item reveal">
+                <div class="expertise-icon">⚡</div>
+                <h3 class="expertise-title">Cloudflare Workers & Durable Objects</h3>
+                <p class="expertise-description">
+                    Architecting stateful serverless applications at global scale. Deep expertise
+                    in edge computing patterns, WebSocket handling, and SQLite-backed persistence.
+                </p>
+            </div>
+
+            <div class="expertise-item reveal">
+                <div class="expertise-icon">🔗</div>
+                <h3 class="expertise-title">MCP & AI Agent Infrastructure</h3>
+                <p class="expertise-description">
+                    Building Model Context Protocol servers, OAuth flows for agents, and
+                    tools that bridge AI systems with real-world APIs and data.
+                </p>
+            </div>
+
+            <div class="expertise-item reveal">
+                <div class="expertise-icon">📄</div>
+                <h3 class="expertise-title">OpenAPI & API Design</h3>
+                <p class="expertise-description">
+                    Creating searchable API ecosystems, specification-first development,
+                    and tools for API discovery and integration.
+                </p>
+            </div>
+
+            <div class="expertise-item reveal">
+                <div class="expertise-icon">🌐</div>
+                <h3 class="expertise-title">Context Engineering</h3>
+                <p class="expertise-description">
+                    Transforming codebases, documentation, and web content into
+                    optimized context for LLMs and AI agents.
+                </p>
+            </div>
+
+            <div class="expertise-item reveal">
+                <div class="expertise-icon">🔐</div>
+                <h3 class="expertise-title">OAuth & Authentication</h3>
+                <p class="expertise-description">
+                    Simplifying authentication for developers and agents. Universal
+                    identity providers, token management, and secure integrations.
+                </p>
+            </div>
+
+            <div class="expertise-item reveal">
+                <div class="expertise-icon">📦</div>
+                <h3 class="expertise-title">Developer Experience</h3>
+                <p class="expertise-description">
+                    CLI tools, SDKs, and utilities that make complex tasks simple.
+                    Focus on minimal configuration and maximum utility.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2 class="contact-title reveal">Let's Build Together</h2>
+        <p class="reveal" style="color: var(--muted); max-width: 600px; margin: 0 auto;">
+            Interested in AI infrastructure, agent-friendly web development,
+            or collaboration opportunities? Get in touch.
+        </p>
+        <div class="contact-links reveal">
+            <a href="https://github.com/janwilmake" class="contact-link" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                GitHub
+            </a>
+            <a href="https://x.com/janwilmake" class="contact-link" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                X / Twitter
+            </a>
+            <a href="https://blog.janwilmake.com" class="contact-link" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                </svg>
+                Blog
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <span style="font-family: 'JetBrains Mono', monospace;">© 2025 Jan Wilmake</span>
+            <span style="margin-left: 2rem;">Building from anywhere</span>
+        </div>
+        <div>
+            <a href="https://context.forgithub.com/janwilmake" target="_blank">View Full Context</a>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect for glow orbs
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.glow-orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            orbs.forEach((orb, i) => {
+                const speed = i === 0 ? 30 : -30;
+                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>
