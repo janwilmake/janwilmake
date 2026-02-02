@@ -35,15 +35,27 @@
 
         .job-header {
             display: flex;
-            align-items: baseline;
-            margin-bottom: 4px;
+            align-items: flex-start;
+            margin-bottom: 8px;
             gap: 8px;
+        }
+
+        .job-company-wrapper {
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
         }
 
         .job-company {
             font-weight: bold;
             color: #000;
-            min-width: 140px;
+        }
+
+        .job-location {
+            font-style: italic;
+            font-size: 11px;
+            color: #888;
+            line-height: 1.2;
         }
 
         .job-date {
@@ -137,7 +149,7 @@
                 gap: 4px;
             }
 
-            .job-company,
+            .job-company-wrapper,
             .job-date {
                 min-width: unset;
             }
@@ -158,7 +170,7 @@
             <p class="subtitle">Independent Researcher, AI Engineer, Typescript Nerd</p>
         </div>
         <a href="/portfolio" target="_blank" class="qr-code">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://janwilmake.com/portfolio"
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://github.com/janwilmake"
                 alt="GitHub QR Code" title="Visit my GitHub" width="100" height="100" />
         </a>
     </div>
@@ -172,74 +184,86 @@
         <h2>Most Notable Experience</h2>
 
         <div class="job-header">
-            <span class="job-company">Parallel</span>
-            <span class="job-date">2025-current</span>
+            <span class="job-company-wrapper"><span class="job-company">Parallel Web Systems</span><span
+                    class="job-location">Remote, Palo Alto</span></span>
+            <span class="job-date">2025-2026</span>
             <span class="job-desc">Started up a DevRel capacity, improving DX for thousands of developers
-                worldwide.</span>
+                worldwide</span>
         </div>
 
         <div class="job-header">
-            <span class="job-company">uithub</span>
+            <span class="job-company-wrapper"><span class="job-company">uithub</span><span
+                    class="job-location">-</span></span>
             <span class="job-date">2025</span>
             <span class="job-desc">Stealth & OSS high-scale AI Code Analysis and Transformation, Cloudflare</span>
         </div>
 
         <div class="job-header">
-            <span class="job-company">Slimmer AI</span>
+            <span class="job-company-wrapper"><span class="job-company">Slimmer AI</span><span
+                    class="job-location">Groningen</span></span>
             <span class="job-date">2024</span>
             <span class="job-desc">Led product pivot initiatives and implemented LLM pipelines for
                 ClaimWise, AWS</span>
         </div>
 
         <div class="job-header">
-            <span class="job-company">Minion AI</span>
+            <span class="job-company-wrapper"><span class="job-company">Minion AI</span><span
+                    class="job-location">Remote, San Francisco</span></span>
             <span class="job-date">2024</span>
             <span class="job-desc">Developed browser-based AI Agent with SF-based team lead by Alex Graveley</span>
         </div>
 
 
         <div class="job-header">
-            <span class="job-company">ScrapingBee</span>
+            <span class="job-company-wrapper"><span class="job-company">ScrapingBee</span><span
+                    class="job-location">Remote, France</span></span>
             <span class="job-date">2023</span>
             <span class="job-desc">Built POC for AI web-scraping Agent using OpenAPI-First Architecture</span>
         </div>
 
         <div class="job-header">
-            <span class="job-company">CoworkSurf</span>
+            <span class="job-company-wrapper"><span class="job-company">CoworkSurf</span><span
+                    class="job-location">Remote</span></span>
             <span class="job-date">2022</span>
             <span class="job-desc">Built booking platform for remote workers at surf locations, complex Stripe
                 integration</span>
         </div>
 
         <div class="job-header">
-            <span class="job-company">InterGamma</span>
+            <span class="job-company-wrapper"><span class="job-company">InterGamma</span><span
+                    class="job-location">Remote, Leusden</span></span>
             <span class="job-date">2021-2022</span>
             <span class="job-desc">Developed Gamma & Karwei mobile applications (greenfield)</span>
         </div>
 
 
         <div class="job-header">
-            <span class="job-company">Emesa</span>
+            <span class="job-company-wrapper"><span class="job-company">Emesa</span><span class="job-location">Remote,
+                    Amsterdam</span></span>
             <span class="job-date">2021-2022</span>
             <span class="job-desc">Rebuilt actievandedag.nl eCommerce platform serving 100.000s of users</span>
         </div>
 
 
         <div class="job-header">
-            <span class="job-company">Stoic Strategies</span>
+            <span class="job-company-wrapper"><span class="job-company">Stoic Strategies</span><span
+                    class="job-location">Remote,
+                    Amsterdam</span></span>
             <span class="job-date">2021</span>
             <span class="job-desc">Built dashboard for trading strategy analysing and managing 8 figure
                 portfolio</span>
         </div>
 
         <div class="job-header">
-            <span class="job-company">Dyme</span>
+            <span class="job-company-wrapper"><span class="job-company">Dyme</span><span
+                    class="job-location">Amsterdam</span></span>
             <span class="job-date">2019</span>
             <span class="job-desc">Core developer for personal finance app serving thousands of users</span>
         </div>
 
         <div class="job-header">
-            <span class="job-company">Time4Crime</span>
+            <span class="job-company-wrapper"><span class="job-company">Time4Crime</span><span
+                    class="job-location">-</span></span>
             <span class="job-date">2006 - 2016</span>
             <span class="job-desc">Created and maintained text-based MMORPG in PHP, managing volunteer team</span>
         </div>
