@@ -12,13 +12,16 @@ My Creations are used by 1000s of developers:
 
 - 🖥️ [uithub](https://uithub.com) - Ask Your LLM Coding Questions
 - 📄 [Context Area](https://contextarea.com) - Prompt Editor for Context Engineers
-- 🤖 [LLMTEXT](https://llmtext.com) - Tools for the `llms.txt` standard
 - 🅾️ [OpenAPI Search](https://openapisearch.com/) - Let your LLM understand ANY API
 - Ⓖ [GoogLLM](https://googllm.com) - LLM-Friendly Google API
-<!--
+- 🤖 [LLMTEXT](https://llmtext.com) - Tools for the `llms.txt` standard
 - 📄 [Markdown Browser](https://markdownbrowser.com) - See the Web the Way AI Sees It
-- 📜 [Wilmake History](https://history.wilmake.com) - An AI Connector That Knows Your Browser History
+<!--
+- 🌶️ [ProMind](https://getpromind.com) - Your AI with Perfect Memory.
 - 🗣️ [Grok Thyself](https://grokthyself.com) - Your 𝕏 Posts as a Personal MCP
+
+- 📜 [Wilmake History](https://history.wilmake.com) - An AI Connector That Knows Your Browser History
+- 🐱 [Context for GitHub](https://context.forgithub.com)
   -->
 
 # Sponsors
