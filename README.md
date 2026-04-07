@@ -18,11 +18,11 @@ My Creations are used by 1000s of developers:
 - 📄 [Markdown Browser](https://markdownbrowser.com) - See the Web the Way AI Sees It
 - 🗣️ [Grok Thyself](https://grokthyself.com) - Use 𝕏 Data in Your Knowledge Base
 - 📜 [Wilmake History](https://history.wilmake.com) - An AI Connector That Knows Your Browser History
+- 🐱 [Context for GitHub](https://context.forgithub.com)
 
 <!--
 - 🌶️ [ProMind](https://getpromind.com) - Your AI with Perfect Memory.
-- 🐱 [Context for GitHub](https://context.forgithub.com)
-  -->
+-->
 
 # Sponsors
 
