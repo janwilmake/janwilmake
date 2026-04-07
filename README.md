@@ -16,11 +16,11 @@ My Creations are used by 1000s of developers:
 - Ⓖ [GoogLLM](https://googllm.com) - LLM-Friendly Google API
 - 🤖 [LLMTEXT](https://llmtext.com) - Tools for the `llms.txt` standard
 - 📄 [Markdown Browser](https://markdownbrowser.com) - See the Web the Way AI Sees It
+- 🗣️ [Grok Thyself](https://grokthyself.com) - Use 𝕏 Data in Your Knowledge Base
+- 📜 [Wilmake History](https://history.wilmake.com) - An AI Connector That Knows Your Browser History
+
 <!--
 - 🌶️ [ProMind](https://getpromind.com) - Your AI with Perfect Memory.
-- 🗣️ [Grok Thyself](https://grokthyself.com) - Your 𝕏 Posts as a Personal MCP
-
-- 📜 [Wilmake History](https://history.wilmake.com) - An AI Connector That Knows Your Browser History
 - 🐱 [Context for GitHub](https://context.forgithub.com)
   -->
 
