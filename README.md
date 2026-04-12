@@ -8,7 +8,7 @@ It's my Mission to Ensure the Agent-Friendly Internet will be Open and Distribut
 
 The main products that I built that I use daily are [uithub](https://uithub.com) and [contextarea](https://contextarea.com). You will see this list expand over the coming years. The main products I did not build that I use daily are Cloudflare, X, VSCode, and GitHub. You will see this list shrink over the coming years.
 
-My Creations are used by 1000s of developers:
+Here are some of my creations:
 
 - 🖥️ [uithub](https://uithub.com) - Ask Your LLM Coding Questions
 - 📄 [Context Area](https://contextarea.com) - Prompt Editor for Context Engineers
@@ -16,13 +16,14 @@ My Creations are used by 1000s of developers:
 - Ⓖ [GoogLLM](https://googllm.com) - LLM-Friendly Google API
 - 🤖 [LLMTEXT](https://llmtext.com) - Tools for the `llms.txt` standard
 - 📄 [Markdown Browser](https://markdownbrowser.com) - See the Web the Way AI Sees It
+
+LLM Wiki / Personal Context Base Creation:
+
 - 🗣️ [Grok Thyself](https://grokthyself.com) - Use 𝕏 Data in Your Knowledge Base
-- 📜 [Wilmake History](https://history.wilmake.com) - An AI Connector That Knows Your Browser History
+- 📜 [Browser History to Repo](https://github.com/janwilmake/browser-history-to-repo)
 - 🐱 [Context for GitHub](https://context.forgithub.com)
 
-<!--
-- 🌶️ [ProMind](https://getpromind.com) - Your AI with Perfect Memory.
--->
+<!-- selfdrivingrepo.com -->
 
 # Sponsors
 
